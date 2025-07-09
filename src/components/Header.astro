@@ -1,50 +1,56 @@
 ---
 ---
-
-<header class="header">
-    <nav class="nav">
-        <a href="/" class="logo">Fiestas Las Terreras</a>
-        <ul class="nav-list">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#cartel">Cartel</a></li>
-            <li><a href="#galeria">Galería</a></li>
-        </ul>
-    </nav>
-    <style>
-        .header {
-            background: #6a97c5;
-            padding: 1rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .nav {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1.5rem;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            text-decoration: none;
-        }
-        .nav-list {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-list a {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-list a:hover {
-            color: #e67e22;
-        }
-    </style>
+<header class="px-4 lg:px-6 h-14 flex items-center bg-white shadow-sm relative">
+  <a href="#" class="flex items-center justify-center gap-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="h-6 w-6 text-rose-500"
+    >
+      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+    </svg>
+    <span class="font-bold text-lg">Las Terreras</span>
+  </a>
+  <nav class="ml-auto hidden sm:flex gap-4 sm:gap-6">
+    <a href="#programa" class="text-sm font-medium hover:underline underline-offset-4">Programa</a>
+    <a href="#galeria" class="text-sm font-medium hover:underline underline-offset-4">Galería</a>
+    <a href="#patrocinadores" class="text-sm font-medium hover:underline underline-offset-4">Patrocinadores</a>
+    <a href="#contacto" class="text-sm font-medium hover:underline underline-offset-4">Contacto</a>
+  </nav>
+  <button id="menu-toggle" class="ml-auto sm:hidden flex items-center justify-center p-2 rounded focus:outline-none focus:ring-2 focus:ring-rose-500" aria-label="Abrir menú">
+    <svg class="h-7 w-7 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  </button>
+  <div id="mobile-menu" class="absolute top-14 right-4 left-4 z-50 bg-white rounded-lg shadow-lg flex flex-col items-center gap-4 py-4 px-6 sm:hidden hidden">
+    <a href="#programa" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Programa</a>
+    <a href="#galeria" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Galería</a>
+    <a href="#patrocinadores" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Patrocinadores</a>
+    <a href="#contacto" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Contacto</a>
+  </div>
+  <script is:inline>
+    if (typeof window !== 'undefined') {
+      const btn = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+        menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+          });
+        });
+      }
+    }
+  </script>
 </header>
