@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Fiestas de Las Terreras">
-  <div class="flex flex-col min-h-[100dvh]">
-    <header class="px-4 lg:px-6 h-14 flex items-center bg-white shadow-sm">
+  <div class="flex flex-col min-h-[100dvh] w-full overflow-x-hidden">
+    <header class="px-4 lg:px-6 h-14 flex items-center bg-white shadow-sm relative">
       <a href="#" class="flex items-center justify-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ import Layout from '../layouts/Layout.astro';
         </svg>
         <span class="font-bold text-lg">Las Terreras</span>
       </a>
-      <nav class="ml-auto flex gap-4 sm:gap-6">
+      <nav class="ml-auto hidden sm:flex gap-4 sm:gap-6">
         <a href="#programa" class="text-sm font-medium hover:underline underline-offset-4">
           Programa
         </a>
@@ -36,6 +36,33 @@ import Layout from '../layouts/Layout.astro';
           Contacto
         </a>
       </nav>
+      <button id="menu-toggle" class="ml-auto sm:hidden flex items-center justify-center p-2 rounded focus:outline-none focus:ring-2 focus:ring-rose-500" aria-label="Abrir menú">
+        <svg class="h-7 w-7 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+      <div id="mobile-menu" class="absolute top-14 right-4 left-4 z-50 bg-white rounded-lg shadow-lg flex-col items-center gap-4 py-4 px-6 sm:hidden hidden">
+        <a href="#programa" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Programa</a>
+        <a href="#galeria" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Galería</a>
+        <a href="#patrocinadores" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Patrocinadores</a>
+        <a href="#contacto" class="block py-2 text-base font-medium text-gray-700 hover:text-rose-600">Contacto</a>
+      </div>
+      <script is:inline>
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+          btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+          });
+          menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+              menu.classList.add('hidden');
+            });
+          });
+        }
+      </script>
     </header>
     <main class="flex-1">
       <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-rose-500 to-orange-500 text-white flex items-center justify-center text-center">
