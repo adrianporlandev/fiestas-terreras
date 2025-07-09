@@ -1,11 +1,317 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Fiestas de Las Terreras">
+  <div class="flex flex-col min-h-[100dvh]">
+    <header class="px-4 lg:px-6 h-14 flex items-center bg-white shadow-sm">
+      <a href="#" class="flex items-center justify-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-6 w-6 text-rose-500"
+        >
+          <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+        </svg>
+        <span class="font-bold text-lg">Las Terreras</span>
+      </a>
+      <nav class="ml-auto flex gap-4 sm:gap-6">
+        <a href="#programa" class="text-sm font-medium hover:underline underline-offset-4">
+          Programa
+        </a>
+        <a href="#galeria" class="text-sm font-medium hover:underline underline-offset-4">
+          Galería
+        </a>
+        <a href="#patrocinadores" class="text-sm font-medium hover:underline underline-offset-4">
+          Patrocinadores
+        </a>
+        <a href="#contacto" class="text-sm font-medium hover:underline underline-offset-4">
+          Contacto
+        </a>
+      </nav>
+    </header>
+    <main class="flex-1">
+      <section class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-rose-500 to-orange-500 text-white flex items-center justify-center text-center">
+        <div class="container px-4 md:px-6">
+          <div class="space-y-4">
+            <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none drop-shadow-lg">
+              ¡Fiestas de Las Terreras!
+            </h1>
+            <p class="mx-auto max-w-[700px] text-lg md:text-xl drop-shadow-md">
+              Celebra con nosotros los días 1, 2 y 3 de Agosto. Música, tradición y diversión para toda la familia.
+            </p>
+            <div class="space-x-4 pt-4">
+              <a
+                href="#programa"
+                class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 py-3 text-lg font-semibold text-rose-600 shadow-lg transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+              >
+                Ver Programa
+              </a>
+              <a
+                href="#galeria"
+                class="inline-flex h-12 items-center justify-center rounded-full border border-white bg-transparent px-6 py-3 text-lg font-semibold text-white shadow-lg transition-colors hover:bg-white hover:text-rose-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+              >
+                Explorar Galería
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="programa" class="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+        <div class="flex justify-center w-full">
+          <div class="container px-4 md:px-6 max-w-4xl w-full text-center">
+            <div class="space-y-4">
+              <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Programa de Fiestas</h2>
+              <p class="mx-auto max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Descubre todas las actividades que hemos preparado para ti.
+              </p>
+            </div>
+            <div class="grid gap-8 py-12 md:grid-cols-2 lg:grid-cols-3 mx-auto">
+              <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <h3 class="text-xl font-bold mb-2">Día 1: Inauguración y Tradición</h3>
+                <ul class="text-left text-muted-foreground space-y-1">
+                  <li>18:00h - Pregón de Fiestas</li>
+                  <li>19:00h - Desfile de Gigantes y Cabezudos</li>
+                  <li>21:00h - Cena Popular en la Plaza</li>
+                  <li>23:00h - Orquesta en Vivo</li>
+                </ul>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <h3 class="text-xl font-bold mb-2">Día 2: Juegos y Conciertos</h3>
+                <ul class="text-left text-muted-foreground space-y-1">
+                  <li>10:00h - Juegos Infantiles y Talleres</li>
+                  <li>14:00h - Paella Gigante</li>
+                  <li>17:00h - Torneo de Petanca</li>
+                  <li>22:00h - Concierto de Rock Local</li>
+                </ul>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <h3 class="text-xl font-bold mb-2">Día 3: Despedida y Fuegos Artificiales</h3>
+                <ul class="text-left text-muted-foreground space-y-1">
+                  <li>11:00h - Misa Mayor y Procesión</li>
+                  <li>13:00h - Vermut Musical</li>
+                  <li>19:00h - Actuación de Flamenco</li>
+                  <li>23:00h - Gran Castillo de Fuegos Artificiales</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria" class="w-full py-12 md:py-24 lg:py-32 bg-white">
+        <div class="flex justify-center w-full">
+          <div class="container px-4 md:px-6 max-w-6xl w-full text-center">
+            <div class="space-y-4">
+              <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Nuestra Galería</h2>
+              <p class="mx-auto max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Revive los mejores momentos de nuestras fiestas.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-12 mx-auto">
+              <div class="relative group overflow-hidden rounded-lg shadow-md md:col-span-1">
+                <img
+                  src="/fiestas/musica.jpg"
+                  width="400"
+                  height="300"
+                  alt="Foto de las fiestas 1"
+                  class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white text-lg font-semibold">Música en vivo</span>
+                </div>
+              </div>
+              <div class="relative group overflow-hidden rounded-lg shadow-md md:col-span-1">
+                <img
+                  src="/fiestas/desfile.jpg"
+                  width="400"
+                  height="300"
+                  alt="Foto de las fiestas 2"
+                  class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white text-lg font-semibold">Desfile</span>
+                </div>
+              </div>
+              <div class="relative group overflow-hidden rounded-lg shadow-md md:col-span-1">
+                <img
+                  src="/fiestas/baile.png"
+                  width="400"
+                  height="300"
+                  alt="Foto de las fiestas 5"
+                  class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white text-lg font-semibold">Baile</span>
+                </div>
+              </div>
+              <div class="relative group overflow-hidden rounded-lg shadow-md md:col-span-1 md:col-start-1 md:row-start-2 md:col-span-2 md:row-span-1 md:h-[400px]">
+                <img
+                  src="/fiestas/comida.jpg"
+                  width="800"
+                  height="400"
+                  alt="Foto de las fiestas 6"
+                  class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105 md:h-full"
+                />
+                <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white text-2xl font-semibold">Comida popular</span>
+                </div>
+              </div>
+              <div class="relative group overflow-hidden rounded-lg shadow-md md:col-span-1">
+                <img
+                  src="/fiestas/tradicion.jpg"
+                  width="400"
+                  height="300"
+                  alt="Foto de las fiestas 7"
+                  class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white text-lg font-semibold">Tradición</span>
+                </div>
+              </div>
+              
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="patrocinadores" class="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+        <div class="flex justify-center w-full">
+          <div class="container px-4 md:px-6 max-w-5xl w-full text-center">
+            <div class="space-y-4">
+              <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Nuestros Patrocinadores</h2>
+              <p class="mx-auto max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Gracias a su apoyo, estas fiestas son posibles.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 py-12 items-center justify-center mx-auto">
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 1"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 2"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 3"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 4"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 5"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 6"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 7"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+              <img
+                src="/placeholder-logo.svg?height=70&width=140"
+                width="140"
+                height="70"
+                alt="Logo Patrocinador 8"
+                class="aspect-[2/1] object-contain mx-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="w-full py-12 md:py-24 lg:py-32 bg-white">
+        <div class="flex justify-center w-full">
+          <div class="container px-4 md:px-6 max-w-2xl w-full text-center">
+            <div class="space-y-4">
+              <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Contáctanos</h2>
+              <p class="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                ¿Tienes alguna pregunta o sugerencia? ¡No dudes en contactarnos!
+              </p>
+            </div>
+            <div class="flex justify-center gap-6 pt-8">
+              <a href="#" class="text-muted-foreground hover:text-blue-500 transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-8 w-8"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                <span class="sr-only">Facebook</span>
+              </a>
+              
+              </a>
+              <a href="https://www.instagram.com/fiestaslasterreras/" class="text-muted-foreground hover:text-rose-500 transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-8 w-8"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.5" y1="6.5" y2="6.5" />
+                </svg>
+                <span class="sr-only">Instagram</span>
+              </a>
+            </div>
+          
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    
+  </div>
 </Layout>
