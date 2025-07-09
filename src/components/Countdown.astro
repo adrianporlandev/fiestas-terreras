@@ -1,0 +1,43 @@
+<section id="contador" class="w-full py-12 md:py-24 lg:py-32 bg-white">
+  <div class="container px-4 md:px-6 mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-6">Cuenta atrás para las fiestas</h2>
+    <div id="countdown" class="flex justify-center gap-4 text-2xl md:text-4xl lg:text-5xl font-mono font-bold mb-4">
+      <div class="flex flex-col items-center">
+        <span id="cd-days">0</span>
+        <span class="text-xs md:text-sm lg:text-base font-normal">días</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="cd-hours">0</span>
+        <span class="text-xs md:text-sm lg:text-base font-normal">horas</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="cd-minutes">0</span>
+        <span class="text-xs md:text-sm lg:text-base font-normal">min</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="cd-seconds">0</span>
+        <span class="text-xs md:text-sm lg:text-base font-normal">seg</span>
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    const target = new Date('2025-08-01T19:00:00');
+    function updateCountdown() {
+      const now = new Date();
+      let diff = Math.max(0, target - now);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * (1000 * 60);
+      const seconds = Math.floor(diff / 1000);
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = hours;
+      document.getElementById('cd-minutes').textContent = minutes;
+      document.getElementById('cd-seconds').textContent = seconds;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</section>

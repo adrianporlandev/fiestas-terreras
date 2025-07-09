@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import Countdown from '../components/Countdown.astro';
 import ProgramaFiestas from '../components/ProgramaFiestas.astro';
 import GaleriaFiestas from '../components/GaleriaFiestas.astro';
 import Ubicacion from '../components/Ubicacion.astro';
@@ -13,19 +14,12 @@ import Contacto from '../components/Contacto.astro';
   <div class="flex flex-col min-h-[100dvh] w-full overflow-x-hidden">
     
     <main class="flex-1">
-      
-      <Hero/>
-
+      <Hero />
       <ProgramaFiestas />
-
       <GaleriaFiestas />
-
       <Ubicacion />
-
       <Patrocinadores />
-
       <Contacto />
     </main>
-    
   </div>
 </Layout>
