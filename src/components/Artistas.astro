@@ -1,62 +1,93 @@
----
-// Puedes pasar un array de artistas como prop si lo deseas en el futuro
-const artistas = [
-  { nombre: 'Dj Francito', foto: '/fiestas/francito.jpg' },
-  { nombre: 'Ainhoa Llamas', foto: '/fiestas/ainhoa-white.jpg' },
-  { nombre: 'Norte a Sur', foto: '/fiestas/norte-sur.jpg' },
-  { nombre: 'Chipiron', foto: '/fiestas/chipiron.jpg' },
-];
----
+
 <section id="artistas" class="w-full py-12 md:py-24 lg:py-32 bg-white">
   <div class="container px-4 md:px-6 max-w-5xl mx-auto text-center">
     <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-6">Artistas Confirmados</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-center">
-      <div class="flex flex-col items-center">
-        <img
-          src="/fiestas/francito.jpg"
-          alt="Dj Francito"
-          class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-lg border-3 border-black mb-3 bg-gray-200 transition-transform duration-300 hover:scale-105"
-          loading="lazy"
-          onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
-        />
-        <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Dj Francito</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <img
-          src="/fiestas/ainhoa-white.jpg"
-          alt="Ainhoa Llamas"
-          class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-lg border-3 border-black mb-3 bg-gray-200 transition-transform duration-300 hover:scale-105"
-          loading="lazy"
-          onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
-        />
-        <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Ainhoa Llamas</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-3 border-black mb-3 bg-gray-200 flex items-center justify-center">
-          <img
-            src="/fiestas/norte-sur.jpg"
-            alt="Norte a Sur"
-            class="w-full h-full object-cover object-center"
-            style="object-position: 75% center;"
+         <!-- Marisol Segura -->
+          <div class="flex flex-col items-center">
+            <img
+              src="/fiestas/marisol.jpg"
+              alt="Marisol Segura"
+              class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-lg border-3 border-black mb-3 bg-gray-200 transition-transform duration-300 hover:scale-105"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+            />
+            <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Marisol Segura</span>
+          </div>
+          <!-- Chipiron -->
+        <div class="flex flex-col items-center">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-3 border-black mb-3 bg-gray-200 flex items-center justify-center">
+                <img
+                src="/fiestas/chipiron.png"
+                alt="Chipiron"
+                class="w-full h-full object-cover object-center"
+                style="object-position: center 40%; transform: scale(1.25);"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+                />
+            </div>
+            <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Chipiron</span>
+        </div>
+        <!-- Ainhoa Llamas -->
+        <div class="flex flex-col items-center">
+            <img
+            src="/fiestas/ainhoa-white.jpg"
+            alt="Ainhoa Llamas"
+            class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-lg border-3 border-black mb-3 bg-gray-200 transition-transform duration-300 hover:scale-105"
             loading="lazy"
             onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
-          />
+            />
+            <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Ainhoa Llamas</span>
         </div>
-        <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Norte a Sur</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-3 border-black mb-3 bg-gray-200 flex items-center justify-center">
-          <img
-            src="/fiestas/chipiron.jpg"
-            alt="Chipiron"
-            class="w-full h-full object-cover object-center"
-            style="object-position: center 40%; transform: scale(1.25);"
-            loading="lazy"
-            onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
-          />
+        <!-- Norte a Sur -->
+        <div class="flex flex-col items-center">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-3 border-black mb-3 bg-gray-200 flex items-center justify-center">
+                <img
+                src="/fiestas/norte-sur.jpg"
+                alt="Norte a Sur"
+                class="w-full h-full object-cover object-center"
+                style="object-position: 75% center;"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+                />
+            </div>
+            <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Norte a Sur</span>
         </div>
-        <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Chipiron</span>
-      </div>
+        
+        <!-- DJ Francito -->
+          <div class="flex flex-col items-center">
+            <img
+              src="/fiestas/francito.jpg"
+              alt="Dj Francito"
+              class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-lg border-3 border-black mb-3 bg-gray-200 transition-transform duration-300 hover:scale-105"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+            />
+            <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Dj Francito</span>
+          </div>
+         
+          <!-- DJ Turry -->
+          <div class="flex flex-col items-center">
+            <img
+              src="/fiestas/dj-turry.png"
+              alt="DJ Turry"
+              class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-lg border-3 border-black mb-3 bg-gray-200 transition-transform duration-300 hover:scale-105"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+            />
+            <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">DJ Turry</span>
+          </div>    
+          <!-- Hernan Morales -->
+          <div class="flex flex-col items-center">
+            <img
+              src="/fiestas/hernan-morales.png"
+              alt="Hernan Morales"
+              class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-lg border-3 border-black mb-3 bg-gray-200 transition-transform duration-300 hover:scale-105"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+            />
+            <span class="font-semibold text-lg md:text-xl text-gray-800 mt-1">Hernan Morales</span>
+          </div>
     </div>
-  </div>
+</div>
 </section>
