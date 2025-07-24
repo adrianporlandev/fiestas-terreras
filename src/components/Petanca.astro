@@ -1,10 +1,10 @@
 <section id="petanca" class="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
   <div class="container px-4 md:px-6 mx-auto max-w-5xl text-center">
     <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">Eventos Populares</h2>
-    
-    <div class="flex flex-col md:flex-row justify-center gap-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- PETANCA -->
-      <button id="petanca-open" class="block w-full max-w-[400px] focus:outline-none">
+      <button id="petanca-open" class="focus:outline-none">
         <div class="relative group overflow-hidden rounded-lg shadow-md w-full">
           <img src="/fiestas/petanca.jpg" width="400" height="300" alt="Concurso de Petanca" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
           <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -14,11 +14,21 @@
       </button>
 
       <!-- CHARANGA -->
-      <button id="charanga-open" class="block w-full max-w-[400px] focus:outline-none">
+      <button id="charanga-open" class="focus:outline-none">
         <div class="relative group overflow-hidden rounded-lg shadow-md w-full">
           <img src="/fiestas/charanga.jpg" width="400" height="300" alt="Charanga" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
           <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <span class="text-white text-lg font-semibold">Charanga</span>
+          </div>
+        </div>
+      </button>
+
+      <!-- DOMINÓ -->
+      <button id="domino-open" class="focus:outline-none">
+        <div class="relative group overflow-hidden rounded-lg shadow-md w-full">
+          <img src="/fiestas/domino.jpg" width="400" height="300" alt="Torneo de Dominó" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white text-lg font-semibold">Torneo de Dominó</span>
           </div>
         </div>
       </button>
@@ -34,12 +44,18 @@
       <div class="absolute inset-0" id="charanga-modal-bg"></div>
       <img src="/fiestas/charanga.jpg" alt="Charanga" class="relative z-10 max-w-full max-h-[90vh] rounded-xl shadow-2xl" />
     </div>
+
+    <div id="domino-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+      <div class="absolute inset-0" id="domino-modal-bg"></div>
+      <img src="/fiestas/domino.jpg" alt="Torneo de Dominó" class="relative z-10 max-w-full max-h-[90vh] rounded-xl shadow-2xl" />
+    </div>
   </div>
 
   <script is:inline>
     const modalHandlers = [
       { openId: 'petanca-open', modalId: 'petanca-modal', bgId: 'petanca-modal-bg' },
       { openId: 'charanga-open', modalId: 'charanga-modal', bgId: 'charanga-modal-bg' },
+      { openId: 'domino-open', modalId: 'domino-modal', bgId: 'domino-modal-bg' },
     ];
 
     modalHandlers.forEach(({ openId, modalId, bgId }) => {
