@@ -33,7 +33,9 @@ import Footer from '../components/Footer.astro';
   <body class="bg-white text-gray-900 transition-colors duration-300 min-h-screen">
     
     <Header />
-    <slot />
+    <main class="pt-16">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

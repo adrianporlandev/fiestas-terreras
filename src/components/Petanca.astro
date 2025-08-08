@@ -1,79 +1,200 @@
-<section id="petanca" class="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-  <div class="container px-4 md:px-6 mx-auto max-w-5xl text-center">
-    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">Eventos Populares</h2>
+<section id="petanca" class="w-full py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-rose-100 to-rose-200 rounded-full opacity-30 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full opacity-30 blur-3xl"></div>
+  </div>
+  
+  <div class="container px-4 md:px-6 mx-auto max-w-6xl text-center relative z-10">
+    <div class="space-y-6 mb-16">
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 text-white text-sm font-medium shadow-lg">
+        <span class="mr-2">🎯</span>
+        Eventos Populares
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-gray-800 to-rose-600 bg-clip-text text-transparent">
+        Eventos Populares
+      </h2>
+      <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed">
+        Participa en nuestros eventos más populares y demuestra tus habilidades. ¡Hay premios para los ganadores!
+      </p>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- PETANCA -->
-      <button id="petanca-open" class="focus:outline-none">
-        <div class="relative group overflow-hidden rounded-lg shadow-md w-full">
-          <img src="/fiestas/petanca.jpg" width="400" height="300" alt="Poster del concurso de petanca de Las Fiestas de Las Terreras 2025" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span class="text-white text-lg font-semibold">Concurso de Petanca</span>
+      <button id="petanca-open" class="focus:outline-none group">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 w-full">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img 
+              src="/fiestas/petanca.jpg" 
+              alt="Poster del concurso de petanca de Las Fiestas de Las Terreras 2025" 
+              class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110" 
+            />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+            <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <h3 class="text-white text-xl font-bold mb-2">Concurso de Petanca</h3>
+              <p class="text-white/80 text-sm">Demuestra tu puntería en nuestro tradicional concurso</p>
+            </div>
+          </div>
+          <!-- Overlay icon -->
+          <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-0 group-hover:scale-100">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
           </div>
         </div>
       </button>
 
       <!-- CHARANGA -->
-      <button id="charanga-open" class="focus:outline-none">
-        <div class="relative group overflow-hidden rounded-lg shadow-md w-full">
-          <img src="/fiestas/charanga.jpg" width="400" height="300" alt="Poster de la Charanga de Las Fiestas de Las Terreras 2025" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span class="text-white text-lg font-semibold">Charanga</span>
+      <button id="charanga-open" class="focus:outline-none group">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 w-full">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img 
+              src="/fiestas/charanga.jpg" 
+              alt="Poster de la Charanga de Las Fiestas de Las Terreras 2025" 
+              class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110" 
+            />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+            <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <h3 class="text-white text-xl font-bold mb-2">Charanga</h3>
+              <p class="text-white/80 text-sm">Disfruta de la música y el ambiente festivo</p>
+            </div>
+          </div>
+          <!-- Overlay icon -->
+          <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-0 group-hover:scale-100">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
           </div>
         </div>
       </button>
 
       <!-- DOMINÓ -->
-      <button id="domino-open" class="focus:outline-none">
-        <div class="relative group overflow-hidden rounded-lg shadow-md w-full">
-          <img src="/fiestas/domino.jpg" width="400" height="300" alt="Poster del Torneo de Dominó de Las Fiestas de Las Terreras 2025" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span class="text-white text-lg font-semibold">Torneo de Dominó</span>
+      <button id="domino-open" class="focus:outline-none group">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 w-full">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img 
+              src="/fiestas/domino.jpg" 
+              alt="Poster del Torneo de Dominó de Las Fiestas de Las Terreras 2025" 
+              class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110" 
+            />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+            <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <h3 class="text-white text-xl font-bold mb-2">Torneo de Dominó</h3>
+              <p class="text-white/80 text-sm">Participa en nuestro emocionante torneo</p>
+            </div>
+          </div>
+          <!-- Overlay icon -->
+          <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-0 group-hover:scale-100">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
           </div>
         </div>
       </button>
     </div>
 
     <!-- MODALES -->
-    <div id="petanca-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+    <div id="petanca-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm hidden animate-fade-in">
       <div class="absolute inset-0" id="petanca-modal-bg"></div>
-      <img src="/fiestas/petanca.jpg" alt="Concurso de Petanca" class="relative z-10 max-w-full max-h-[90vh] rounded-xl shadow-2xl" />
+      <div class="relative z-10 max-w-4xl mx-4">
+        <img src="/fiestas/petanca.jpg" alt="Concurso de Petanca" class="w-full h-auto max-h-[90vh] rounded-2xl shadow-2xl" />
+        <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300" id="petanca-close">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <div id="charanga-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+    <div id="charanga-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm hidden animate-fade-in">
       <div class="absolute inset-0" id="charanga-modal-bg"></div>
-      <img src="/fiestas/charanga.jpg" alt="Charanga" class="relative z-10 max-w-full max-h-[90vh] rounded-xl shadow-2xl" />
+      <div class="relative z-10 max-w-4xl mx-4">
+        <img src="/fiestas/charanga.jpg" alt="Charanga" class="w-full h-auto max-h-[90vh] rounded-2xl shadow-2xl" />
+        <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300" id="charanga-close">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <div id="domino-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+    <div id="domino-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm hidden animate-fade-in">
       <div class="absolute inset-0" id="domino-modal-bg"></div>
-      <img src="/fiestas/domino.jpg" alt="Torneo de Dominó" class="relative z-10 max-w-full max-h-[90vh] rounded-xl shadow-2xl" />
+      <div class="relative z-10 max-w-4xl mx-4">
+        <img src="/fiestas/domino.jpg" alt="Torneo de Dominó" class="w-full h-auto max-h-[90vh] rounded-2xl shadow-2xl" />
+        <button class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300" id="domino-close">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
   <script is:inline>
     const modalHandlers = [
-      { openId: 'petanca-open', modalId: 'petanca-modal', bgId: 'petanca-modal-bg' },
-      { openId: 'charanga-open', modalId: 'charanga-modal', bgId: 'charanga-modal-bg' },
-      { openId: 'domino-open', modalId: 'domino-modal', bgId: 'domino-modal-bg' },
+      { openId: 'petanca-open', modalId: 'petanca-modal', bgId: 'petanca-modal-bg', closeId: 'petanca-close' },
+      { openId: 'charanga-open', modalId: 'charanga-modal', bgId: 'charanga-modal-bg', closeId: 'charanga-close' },
+      { openId: 'domino-open', modalId: 'domino-modal', bgId: 'domino-modal-bg', closeId: 'domino-close' },
     ];
 
-    modalHandlers.forEach(({ openId, modalId, bgId }) => {
+    modalHandlers.forEach(({ openId, modalId, bgId, closeId }) => {
       const openBtn = document.getElementById(openId);
       const modal = document.getElementById(modalId);
       const modalBg = document.getElementById(bgId);
+      const closeBtn = document.getElementById(closeId);
+      
       if (openBtn && modal && modalBg) {
-        openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
-        modalBg.addEventListener('click', () => modal.classList.add('hidden'));
+        openBtn.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+        
+        const closeModal = () => {
+          modal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        };
+        
+        modalBg.addEventListener('click', closeModal);
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeModal);
+        }
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         modalHandlers.forEach(({ modalId }) => {
-          document.getElementById(modalId)?.classList.add('hidden');
+          const modal = document.getElementById(modalId);
+          if (modal && !modal.classList.contains('hidden')) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+          }
         });
       }
     });
   </script>
+
+  <style>
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fade-in 0.3s ease-out;
+    }
+  </style>
 </section>
