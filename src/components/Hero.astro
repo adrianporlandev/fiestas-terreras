@@ -32,10 +32,11 @@
     <div class="space-y-6 animate-fade-in-up">
       <!-- Badge de fecha -->
       <div
+        id="hero-date-badge"
         class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-sm font-medium text-white shadow-lg"
       >
         <span class="mr-2">📅</span>
-        1, 2 y 3 de Agosto 2025
+        Primer finde de agosto
       </div>
 
       <h1
@@ -45,16 +46,16 @@
       </h1>
 
       <p
+        id="hero-date-description"
         class="mx-auto max-w-[700px] text-xl md:text-2xl drop-shadow-lg text-white/90 leading-relaxed animate-fade-in-delay"
       >
-        Celebra con nosotros los días 1, 2 y 3 de Agosto. Música, tradición y
+        Celebra con nosotros el primer finde de agosto. Música, tradición y
         diversión para toda la familia.
       </p>
 
       <!-- Contador regresivo -->
       <div
         class="flex justify-center items-center space-x-4 md:space-x-8 mt-8 animate-fade-in-delay-2"
-        data-countdown-target="2026-08-01T00:00:00"
       >
         <div class="text-center">
           <div
@@ -161,28 +162,71 @@
   </div>
 
   <script is:inline>
-    const countdownContainer = document.querySelector(
-      "[data-countdown-target]",
-    );
-    const targetText = countdownContainer?.getAttribute(
-      "data-countdown-target",
-    );
-    const targetDate = targetText ? new Date(targetText) : null;
-
+    const dateBadgeEl = document.getElementById("hero-date-badge");
+    const dateDescriptionEl = document.getElementById("hero-date-description");
     const dayEl = document.getElementById("hero-cd-days");
     const hourEl = document.getElementById("hero-cd-hours");
     const minuteEl = document.getElementById("hero-cd-minutes");
     const secondEl = document.getElementById("hero-cd-seconds");
+
+    function getFirstWeekendStart(year) {
+      const augustFirst = new Date(year, 7, 1, 0, 0, 0, 0);
+      const daysUntilSaturday = (6 - augustFirst.getDay() + 7) % 7;
+      const firstSaturday = new Date(
+        year,
+        7,
+        1 + daysUntilSaturday,
+        0,
+        0,
+        0,
+        0,
+      );
+      const firstFriday = new Date(firstSaturday);
+      firstFriday.setDate(firstSaturday.getDate() - 1);
+      return firstFriday;
+    }
+
+    function getNextFiestaStart(now) {
+      let candidate = getFirstWeekendStart(now.getFullYear());
+      if (now.getTime() >= candidate.getTime()) {
+        candidate = getFirstWeekendStart(now.getFullYear() + 1);
+      }
+      return candidate;
+    }
+
+    function formatRange(startDate) {
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 2);
+
+      const monthFormatter = new Intl.DateTimeFormat("es-ES", {
+        month: "long",
+      });
+      const startMonth = monthFormatter.format(startDate);
+      const endMonth = monthFormatter.format(endDate);
+
+      if (startMonth === endMonth) {
+        return `Del ${startDate.getDate()} al ${endDate.getDate()} de ${startMonth}`;
+      }
+
+      return `Del ${startDate.getDate()} de ${startMonth} al ${endDate.getDate()} de ${endMonth}`;
+    }
+
+    const targetDate = getNextFiestaStart(new Date());
+    const dateLabel = formatRange(targetDate);
+
+    if (dateBadgeEl) {
+      dateBadgeEl.innerHTML = `<span class="mr-2">📅</span>${dateLabel}`;
+    }
+
+    if (dateDescriptionEl) {
+      dateDescriptionEl.textContent = `${dateLabel}. Música, tradición y diversión para toda la familia.`;
+    }
 
     function pad(value) {
       return String(value).padStart(2, "0");
     }
 
     function renderCountdown() {
-      if (!targetDate || Number.isNaN(targetDate.getTime())) {
-        return;
-      }
-
       const now = new Date();
       let diff = Math.max(0, targetDate.getTime() - now.getTime());
 
