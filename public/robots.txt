@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lasterreras.pages.dev/sitemap.xml
