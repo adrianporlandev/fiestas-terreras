@@ -101,25 +101,21 @@
       <div
         class="flex flex-col sm:flex-row gap-4 pt-8 justify-center items-center animate-fade-in-delay-3"
       >
-        <a
-          href="#programa"
-          class="group inline-flex h-14 items-center justify-center rounded-full bg-gradient-to-r from-rose-500 to-rose-600 px-8 py-4 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:from-rose-600 hover:to-rose-700 hover:shadow-2xl hover:scale-105 focus:visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2"
+        <button
+          type="button"
+          disabled
+          aria-disabled="true"
+          class="group inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/10 px-8 py-4 text-lg font-semibold text-white/75 shadow-xl transition-all duration-300 cursor-not-allowed opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2"
+          title="Programa disponible próximamente"
         >
           <span class="mr-2">🎉</span>
           Ver Programa
-          <svg
-            class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          <span
+            class="ml-3 rounded-full border border-dashed border-white/35 bg-white/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
+            Próximamente
+          </span>
+        </button>
         <a
           href="#galeria"
           class="group inline-flex h-14 items-center justify-center rounded-full border-2 border-white bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:bg-white hover:text-rose-600 hover:shadow-2xl hover:scale-105 focus:visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
