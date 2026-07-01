@@ -6,7 +6,6 @@ Sitio oficial informativo de las Fiestas de Las Terreras (Lorca, Murcia).
 - [Web principal](https://lasterreras.pages.dev/)
 - [Sitemap](https://lasterreras.pages.dev/sitemap.xml)
 - [Robots](https://lasterreras.pages.dev/robots.txt)
-- [Contexto LLM detallado](https://lasterreras.pages.dev/llm.txt)
 
 ## Informacion publica del evento
 - Ubicacion: Las Terreras, Lorca, Murcia.
