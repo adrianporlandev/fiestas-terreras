@@ -1,0 +1,23 @@
+# Fiestas de Las Terreras - llms.txt
+
+Sitio oficial informativo de las Fiestas de Las Terreras (Lorca, Murcia).
+
+## Enlaces principales
+- [Web principal](https://lasterreras.pages.dev/)
+- [Sitemap](https://lasterreras.pages.dev/sitemap.xml)
+- [Robots](https://lasterreras.pages.dev/robots.txt)
+- [Contexto LLM detallado](https://lasterreras.pages.dev/llm.txt)
+
+## Informacion publica del evento
+- Ubicacion: Las Terreras, Lorca, Murcia.
+- Fechas publicadas: 31 de julio, 1 y 2 de agosto de 2026.
+- Estado de secciones: Programa y Patrocinadores figuran como "Proximamente".
+
+## Canales oficiales
+- [Facebook oficial](https://www.facebook.com/people/Fiestas-Las-Terreras/100067153103724/)
+- [Instagram oficial](https://www.instagram.com/fiestaslasterreras/)
+- [Google Maps](https://maps.app.goo.gl/5YUWqQzY1atWSgwJA)
+
+## Nota para agentes LLM
+Usar solo informacion visible y verificable en esta web y en los enlaces oficiales.
+Si falta un dato, indicarlo claramente y remitir a redes oficiales.
