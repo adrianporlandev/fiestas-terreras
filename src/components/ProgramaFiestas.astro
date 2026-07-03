@@ -3,6 +3,8 @@ import { programaFiestas } from "../data/programaFiestas";
 
 const resaltarTextoEntreComillas = (texto: string) =>
   texto.replace(/"([^"]+)"/g, '"<strong class="font-bold text-gray-900">$1</strong>"');
+
+const obtenerNumeroDia = (fecha: string) => fecha.match(/\d{1,2}/)?.[0] ?? "";
 ---
 <section id="programa" class="w-full py-20 bg-gradient-to-br from-white via-gray-50 to-gray-100 relative overflow-hidden">
   <!-- Background decoration -->
@@ -33,9 +35,9 @@ const resaltarTextoEntreComillas = (texto: string) =>
             <div class={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${dia.theme.bg} rounded-full opacity-50 -translate-y-10 translate-x-10`}></div>
 
             <div class="relative z-10">
-              <div class="flex items-center gap-3 mb-6">
-                <div class={`w-12 h-12 bg-gradient-to-br ${dia.theme.badge} rounded-full flex items-center justify-center shadow-lg`}>
-                  <span class="text-white font-bold text-lg">{dia.numero}</span>
+              <div class="mb-6 text-center">
+                <div class={`w-12 h-12 bg-gradient-to-br ${dia.theme.badge} rounded-full flex items-center justify-center shadow-lg mx-auto mb-3`}>
+                  <span class="text-white font-bold text-lg">{obtenerNumeroDia(dia.fecha)}</span>
                 </div>
                 <div>
                   <h3 class="text-xl font-bold text-gray-800">{dia.nombre}</h3>

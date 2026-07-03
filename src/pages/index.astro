@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import ProgramaPreFiestas from "../components/ProgramaPreFiestas.astro";
 import ProgramaFiestas from "../components/ProgramaFiestas.astro";
 import GaleriaFiestas from "../components/GaleriaFiestas.astro";
 import Ubicacion from "../components/Ubicacion.astro";
@@ -18,23 +19,15 @@ import Concentracion from "../components/Concentracion.astro";
   <div class="flex flex-col min-h-[100dvh] w-full overflow-x-hidden">
     <main class="flex-1">
       <Hero />
-
+      <ProgramaPreFiestas />
       <ProgramaFiestas />
-      <!-- Fondo Gris ✅ -->
       <Artistas />
       <Concentracion />
-
-      <!-- Fondo Blanco ✅ -->
       <!-- <Eventos /> -->
-      <!-- Fondo Gris ✅ -->
       <Ubicacion />
-      <!-- Fondo Blanco ✅ -->
       <GaleriaFiestas />
-      <!-- Fondo Gris ✅ -->
       <!-- <Patrocinadores /> -->
-      <!-- Fondo Blanco ✅ -->
       <Contacto />
-      <!-- Fondo Gris  -->
     </main>
   </div>
 </Layout>
