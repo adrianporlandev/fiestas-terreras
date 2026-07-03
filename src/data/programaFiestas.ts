@@ -87,7 +87,7 @@ export const programaFiestas: ProgramaDia[] = [
       },
       {
         hora: "21:15h",
-        descripcion: "Coronación de las Reinas de las Fiestas",
+        descripcion: "Coronación de las \"Reinas de las Fiestas\"",
       },
       {
         hora: "23:30h",
