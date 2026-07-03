@@ -38,7 +38,7 @@ export const programaFiestas: ProgramaDia[] = [
       },
       {
         hora: "17:00h",
-        descripcion: "Habra platos de migas para todos los asistentes que quiean por 6€ ",
+        descripcion: "Habra platos de migas para todos los asistentes que quieran por 6€ ",
       },
       {
         hora: "20:00h",
