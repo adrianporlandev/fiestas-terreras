@@ -1,53 +1,173 @@
 ---
+const featuredSponsors = [
+  {
+    href: "tel:659606211",
+    src: "/patros/aquasol.jpg",
+    alt: "Logo de Aquasol",
+    width: 600,
+    height: 220,
+  },
+
+  {
+    href: "mailto:novometal5@gmail.com",
+    src: "/patros/novometal.jpg",
+    alt: "Logo de Novometal",
+    width: 600,
+    height: 220,
+  },
+  {
+    href: "tel:868193385",
+    src: "/patros/bar-terreras.jpg",
+    alt: "Logo de Bar Pepe",
+    width: 600,
+    height: 220,
+  },
+  {
+    href: "https://antikuas.com/",
+    src: "/patros/antikuas-300x105.png",
+    alt: "Logo de Antikuas",
+    width: 600,
+    height: 220,
+  },
+];
+
+const sponsors = [
+  {
+    href: "tel:617374549",
+    src: "/patros/aluminios-gimenez.jpg",
+    alt: "Logo de Aluminios Giménez",
+  },
+  {
+    href: "tel:646555528",
+    src: "/patros/supermercado.jpg",
+    alt: "Logo de Supermercado La Paca",
+  },
+  {
+    href: "tel:659702869",
+    src: "/patros/jose-ignacio.jpg",
+    alt: "Logo de Jose Ignacio Obras y Reformas",
+  },
+  {
+    href: "tel:968464467",
+    src: "/patros/hermanos-piernas.jpg",
+    alt: "Logo de Hermanos Piernas",
+  },
+  {
+    href: "tel:669377408",
+    src: "/patros/ferramar-lorca.jpg",
+    alt: "Logo de Ferramar Lorca",
+  },
+  {
+    href: "https://www.bricospain.com/ ",
+    src: "/patros/logo_bricospain.png",
+    alt: "Logo de Bricospain",
+  },
+
+  {
+    href: "tel:669747755",
+    src: "/patros/hormigones.jpg",
+    alt: "Logo de Hormigones Blacedisa",
+  },
+  {
+    href: "tel:968464467",
+    src: "/patros/transtejera.jpg",
+    alt: "Logo de Transtejera",
+  },
+  {
+    href: "https://wa.me/34697708787",
+    src: "/patros/bornas.jpg",
+    alt: "Logo de Bornas Sanchez",
+  },
+  {
+    href: "https://www.grupoqp.com/",
+    src: "/patros/PQP_logo.png",
+    alt: "Logo de Productos QP",
+  },
+  {
+    href: "https://www.moblorca.es/",
+    src: "/patros/MOB-CANTETRANS-300x128.png",
+    alt: "Logo de Moblorca",
+  },
+  {
+    href: "tel:968468910",
+    src: "/patros/contenedores-jose.png",
+    alt: "Logo de Contenedores Jose",
+  },
+  {
+    href: "tel:647787861",
+    src: "/patros/panaderia.jpg",
+    alt: "Logo de Panadería La Paca",
+  },
+  {
+    href: "tel:968467719",
+    src: "/patros/materiales-alcazar.jpg",
+    alt: "Logo de Materiales Alcazar",
+  },
+];
 ---
-<section id="patrocinadores" class="w-full py-12 md:py-24 lg:py-32 bg-white">
+
+<section id="patrocinadores" class="w-full py-12 md:py-24 lg:py-32 relative">
   <div class="flex justify-center w-full">
     <div class="container px-4 md:px-6 max-w-5xl w-full text-center">
       <div class="space-y-4">
-        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Nuestros Patrocinadores</h2>
-        <p class="mx-auto max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+          Nuestros Patrocinadores
+        </h2>
+        <p
+          class="mx-auto max-w-225 text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+        >
           Gracias a su apoyo, estas fiestas son posibles.
         </p>
       </div>
-      <div class="flex justify-center py-8">
-        <a href="tel:659606211" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/aquasol2.png" width="600" height="220" alt="Logo de Aquasol" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 max-h-40 w-auto h-40 md:max-h-56 md:w-[600px] md:h-[220px] md:hover:scale-140" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="tel:647787861" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/panaderia.jpg" width="600" height="220" alt="Logo de Panadería La Paca" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 max-h-40 w-auto h-40 md:max-h-56 md:w-[600px] md:h-[220px] md:hover:scale-140" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
+      <div class="grid gap-6 py-8 sm:grid-cols-2 xl:grid-cols-4">
+        {
+          featuredSponsors.map((sponsor) => (
+            <a
+              href={sponsor.href}
+              target={sponsor.href.startsWith("http") ? "_blank" : "_self"}
+              rel={
+                sponsor.href.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              class="group flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
+            >
+              <img
+                src={sponsor.src}
+                width={sponsor.width}
+                height={sponsor.height}
+                alt={sponsor.alt}
+                class="h-32 w-full max-w-65 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-36 md:h-40 lg:h-44"
+                onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+              />
+            </a>
+          ))
+        }
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 py-12 items-center justify-center mx-auto">
-        <a href="tel:669747755" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/hormigones.jpg" width="320" height="160" alt="Logo de Hormigones Blacedisa" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="tel:610254787" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/grupo-robles.jpg" width="320" height="160" alt="Logo de Grupo Robles" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="tel:678658020" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/autoservicio.jpg" width="320" height="160" alt="Logo de Autoservicio Moya" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="mailto:novometal5@gmail.com" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/novometal.jpg" width="400" height="200" alt="Logo de Novometal" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[400px] md:h-[200px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="tel:659702869" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/jose-ignacio.jpg" width="320" height="160" alt="Logo de Jose Ignacio Obras y Reformas" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="tel:646555528" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/supermercado.jpg" width="320" height="160" alt="Logo de Supermercada La Paca" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="tel:868193385" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/bar-terreras.jpg" width="320" height="160" alt="Logo de Bar Pepe" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="https://www.tecnourbs.com/" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/technourbs.png" width="320" height="160" alt="Logo de Technourbs" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="tel:968494119" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/cerrajeria.jpg" width="320" height="160" alt="Logo de Cerrajeria Kisko" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
-        <a href="https://www.lorca.es/" target="_blank" rel="noopener noreferrer">
-          <img src="/fiestas/ayuntamiento.jpg" width="320" height="160" alt="Logo de Ayuntamiento de Lorca" class="aspect-[2/1] object-contain mx-auto rounded-lg p-2 transition-transform duration-300 md:w-[320px] md:h-[160px] md:hover:scale-150" onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');" />
-        </a>
+      <div class="grid gap-5 py-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        {
+          sponsors.map((sponsor) => (
+            <a
+              href={sponsor.href}
+              target={sponsor.href.startsWith("http") ? "_blank" : "_self"}
+              rel={
+                sponsor.href.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              class="group flex items-center justify-center rounded-xl border border-slate-200 bg-white p-3 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
+            >
+              <img
+                src={sponsor.src}
+                width="320"
+                height="160"
+                alt={sponsor.alt}
+                class="h-24 w-full max-w-50 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-28 md:h-32"
+                onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
+              />
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
