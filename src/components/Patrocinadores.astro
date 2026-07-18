@@ -5,7 +5,8 @@ const featuredSponsors = [
     src: "/patros/aquasol.jpg",
     alt: "Logo de Aquasol",
     width: 600,
-    height: 220,
+    height: 800,
+    isPortrait: true,
   },
 
   {
@@ -137,7 +138,11 @@ const sponsors = [
                 width={sponsor.width}
                 height={sponsor.height}
                 alt={sponsor.alt}
-                class="h-32 w-full max-w-65 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-36 md:h-40 lg:h-44"
+                class={`w-full object-contain transition-transform duration-300 group-hover:scale-105 ${
+                  sponsor.isPortrait
+                    ? "h-56 max-w-65 sm:h-64 md:h-72 lg:h-80"
+                    : "h-32 max-w-65 sm:h-36 md:h-40 lg:h-44"
+                }`}
                 onerror="this.onerror=null;this.src='/placeholder-logo.svg';this.classList.add('bg-gray-100','border-dashed');"
               />
             </a>
