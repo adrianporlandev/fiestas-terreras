@@ -1,0 +1,326 @@
+---
+import { programaFiestas } from "../data/programaFiestas";
+
+// Serialize data to pass to client script
+const programaJSON = JSON.stringify(programaFiestas);
+---
+
+<section id="evento-actual" class="w-full relative overflow-hidden hidden">
+  <!-- Background decoration (matches page style) -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-rose-100 to-rose-200 rounded-full opacity-30 blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full opacity-30 blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 md:px-6 max-w-5xl relative z-10 py-10">
+    <!-- Hidden: shown only during fiestas -->
+    <div id="evento-actual-container" class="hidden">
+      <!-- Header label -->
+      <div class="flex items-center justify-center mb-6">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 text-white text-sm font-semibold shadow-lg"
+        >
+          <span
+            id="evento-status-dot"
+            class="w-2.5 h-2.5 rounded-full bg-white animate-pulse flex-shrink-0"
+          ></span>
+          <span id="evento-status-label">Ahora mismo</span>
+        </div>
+      </div>
+
+      <!-- Main card -->
+      <div
+        class="bg-white border border-gray-200 rounded-3xl shadow-lg p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6"
+      >
+        <!-- Day badge -->
+        <div class="flex-shrink-0 text-center">
+          <div
+            id="evento-day-badge"
+            class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-rose-500 to-rose-600 flex flex-col items-center justify-center shadow-lg"
+          >
+            <span id="evento-day-num" class="text-3xl font-extrabold text-white leading-none"></span>
+            <span id="evento-day-name" class="text-xs font-medium text-white/80 uppercase tracking-wider mt-0.5"></span>
+          </div>
+          <p id="evento-day-date" class="text-gray-500 text-xs mt-2 font-medium"></p>
+        </div>
+
+        <!-- Divider (desktop) -->
+        <div class="hidden md:block w-px bg-gray-200 self-stretch"></div>
+
+        <!-- Event info -->
+        <div class="flex-1 min-w-0">
+          <div
+            id="evento-hora-badge"
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-sm font-bold mb-3 border border-rose-100"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span id="evento-hora"></span>
+          </div>
+          <!-- Contenedor para uno o varios eventos simultáneos -->
+          <div id="evento-descripciones" class="space-y-2 mb-2"></div>
+          <p id="evento-context" class="text-gray-500 text-sm"></p>
+        </div>
+
+        <!-- CTA -->
+        <div class="flex-shrink-0 flex justify-center md:justify-end">
+          <a
+            href="#programa"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 text-white font-semibold text-sm shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            <span>Ver programa</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Next event teaser -->
+      <div id="siguiente-evento-row" class="hidden mt-4 flex justify-center">
+        <div
+          class="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 text-sm shadow-sm"
+        >
+          <svg class="w-4 h-4 text-rose-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5l7 7-7 7"></path>
+          </svg>
+          <span class="font-medium text-gray-400">Despues:</span>
+          <span id="siguiente-evento-hora" class="font-bold text-rose-600"></span>
+          <span id="siguiente-evento-desc" class="text-gray-600 truncate max-w-xs"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline define:vars={{ programaJSON }}>
+  const programa = JSON.parse(programaJSON);
+
+  function parseHora(horaStr) {
+    const clean = horaStr.replace("h", "").trim();
+    const [h, m] = clean.split(":").map(Number);
+    return { h: isNaN(h) ? 0 : h, m: isNaN(m) ? 0 : m };
+  }
+
+  function getFirstWeekendFriday(year) {
+    const augustFirst = new Date(year, 7, 1, 0, 0, 0, 0);
+    const daysUntilSaturday = (6 - augustFirst.getDay() + 7) % 7;
+    const firstSaturday = new Date(year, 7, 1 + daysUntilSaturday, 0, 0, 0, 0);
+    const firstFriday = new Date(firstSaturday);
+    firstFriday.setDate(firstSaturday.getDate() - 1);
+    return firstFriday;
+  }
+
+  function getEventoDate(year, diaIndex, horaStr) {
+    const friday = getFirstWeekendFriday(year);
+    const date = new Date(friday);
+    date.setDate(friday.getDate() + diaIndex);
+    const { h, m } = parseHora(horaStr);
+    // Events past midnight (01:xx, 02:xx) belong to the next calendar day
+    if (h < 6) {
+      date.setDate(date.getDate() + 1);
+    }
+    date.setHours(h, m, 0, 0);
+    return date;
+  }
+
+  function buildEventList(year) {
+    const events = [];
+    programa.forEach(function(dia, diaIndex) {
+      dia.eventos.forEach(function(evento, eventoIndex) {
+        events.push({
+          diaIndex: diaIndex,
+          eventoIndex: eventoIndex,
+          dia: dia,
+          evento: evento,
+          date: getEventoDate(year, diaIndex, evento.hora),
+        });
+      });
+    });
+    events.sort(function(a, b) { return a.date - b.date; });
+    return events;
+  }
+
+  function render() {
+    // --- PREVIEW MODE ---
+    // Add ?preview-evento to the URL to test the section during development.
+    // Use ?preview-evento=2026-08-01T22:00 to simulate a specific date/time.
+    var previewParam = new URLSearchParams(window.location.search).get("preview-evento");
+    var now;
+    if (previewParam !== null) {
+      if (previewParam === "") {
+        // Default: Saturday of fiestas week at 22:00
+        var friday = getFirstWeekendFriday(new Date().getFullYear());
+        var sat = new Date(friday);
+        sat.setDate(friday.getDate() + 1);
+        sat.setHours(22, 0, 0, 0);
+        now = sat;
+      } else {
+        now = new Date(previewParam);
+      }
+    } else {
+      now = new Date();
+    }
+    // --- END PREVIEW MODE ---
+
+    var year = now.getFullYear();
+    var events = buildEventList(year);
+
+    if (!events.length) return;
+
+    var firstDate = events[0].date;
+    var lastDate = events[events.length - 1].date;
+    var fiestaEnd = new Date(lastDate.getTime() + 60 * 60 * 1000);
+
+    var container = document.getElementById("evento-actual-container");
+
+    // Outside fiestas: keep section hidden
+    if (now < firstDate || now >= fiestaEnd) {
+      return;
+    }
+
+    // Inside fiestas: reveal the section
+    var section = document.getElementById("evento-actual");
+    if (section) section.classList.remove("hidden");
+
+    // Inside fiestas window
+    if (container) container.classList.remove("hidden");
+
+    // Find current event (last one that has started)
+    var currentIdx = -1;
+    for (var i = 0; i < events.length; i++) {
+      if (events[i].date <= now) {
+        currentIdx = i;
+      } else {
+        break;
+      }
+    }
+
+    var nextIdx = -1;
+    for (var j = 0; j < events.length; j++) {
+      if (events[j].date > now) {
+        nextIdx = j;
+        break;
+      }
+    }
+
+    var hasNext = nextIdx !== -1;
+    var hasCurrent = currentIdx !== -1;
+
+    var displayEvent;
+    var isNowMode;
+
+    if (hasCurrent) {
+      displayEvent = events[currentIdx];
+      isNowMode = true;
+    } else if (hasNext) {
+      displayEvent = events[nextIdx];
+      isNowMode = false;
+    } else {
+      return;
+    }
+
+    // Status dot & label
+    var dotEl = document.getElementById("evento-status-dot");
+    var labelEl = document.getElementById("evento-status-label");
+
+    if (isNowMode) {
+      if (dotEl) { dotEl.className = "w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse flex-shrink-0"; }
+      if (labelEl) labelEl.textContent = "Ahora mismo";
+    } else {
+      if (dotEl) { dotEl.className = "w-2.5 h-2.5 rounded-full bg-amber-300 animate-pulse flex-shrink-0"; }
+      if (labelEl) labelEl.textContent = "Proximo evento";
+    }
+
+    // Day badge
+    var dayNumEl = document.getElementById("evento-day-num");
+    var dayNameEl = document.getElementById("evento-day-name");
+    var dayDateEl = document.getElementById("evento-day-date");
+    var dia = displayEvent.dia;
+
+    var numMatch = dia.fecha.match(/\d+/);
+    if (dayNumEl) dayNumEl.textContent = numMatch ? numMatch[0] : "";
+    if (dayNameEl) dayNameEl.textContent = dia.nombre;
+    if (dayDateEl) dayDateEl.textContent = dia.fecha;
+
+    // Hora
+    var horaEl = document.getElementById("evento-hora");
+    if (horaEl) horaEl.textContent = displayEvent.evento.hora;
+
+    // Recoger todos los eventos de este mismo slot horario
+    var slotTime = displayEvent.date.getTime();
+    var slotEvents = events.filter(function(e) { return e.date.getTime() === slotTime; });
+
+    // Render de descripciones (una por línea si hay varias)
+    var descContainer = document.getElementById("evento-descripciones");
+    if (descContainer) {
+      descContainer.innerHTML = "";
+      slotEvents.forEach(function(ev, i) {
+        var text = ev.evento.descripcion.replace(/"/g, "");
+        if (slotEvents.length === 1) {
+          // Único evento: título grande
+          var h2 = document.createElement("h2");
+          h2.className = "text-xl md:text-2xl font-bold text-gray-800 leading-snug";
+          h2.textContent = text;
+          descContainer.appendChild(h2);
+        } else {
+          // Varios simultáneos: lista con bullet rose
+          var item = document.createElement("div");
+          item.className = "flex items-start gap-2";
+          var dot = document.createElement("span");
+          dot.className = "mt-1.5 w-2 h-2 rounded-full bg-rose-500 flex-shrink-0";
+          var p = document.createElement("p");
+          p.className = "text-base md:text-lg font-semibold text-gray-800 leading-snug";
+          p.textContent = text;
+          item.appendChild(dot);
+          item.appendChild(p);
+          descContainer.appendChild(item);
+        }
+      });
+    }
+
+    // Context
+    var contextEl = document.getElementById("evento-context");
+    if (contextEl) {
+      if (isNowMode) {
+        contextEl.textContent = "Este evento ya ha comenzado. No te lo pierdas!";
+      } else {
+        var diffMs = displayEvent.date - now;
+        var diffMins = Math.round(diffMs / 60000);
+        if (diffMins < 60) {
+          contextEl.textContent = "Comienza en " + diffMins + " minuto" + (diffMins !== 1 ? "s" : "");
+        } else {
+          var h = Math.floor(diffMins / 60);
+          var m = diffMins % 60;
+          contextEl.textContent = "Comienza en " + h + "h" + (m > 0 ? " " + m + "min" : "");
+        }
+      }
+    }
+
+    // Next event teaser
+    var sigRow = document.getElementById("siguiente-evento-row");
+    if (isNowMode && hasNext && sigRow) {
+      var nextEv = events[nextIdx];
+      var sigHoraEl = document.getElementById("siguiente-evento-hora");
+      var sigDescEl = document.getElementById("siguiente-evento-desc");
+      if (sigHoraEl) sigHoraEl.textContent = nextEv.evento.hora;
+      if (sigDescEl) sigDescEl.textContent = nextEv.evento.descripcion.replace(/"/g, "");
+      sigRow.classList.remove("hidden");
+      sigRow.style.display = "flex";
+    }
+  }
+
+  render();
+  setInterval(render, 60 * 1000);
+</script>
+
+<style>
+  #siguiente-evento-row.hidden {
+    display: none !important;
+  }
+</style>
