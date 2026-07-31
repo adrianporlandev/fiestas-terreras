@@ -5,6 +5,7 @@
     >
       Cuenta atrás para las fiestas
     </h2>
+    <!-- Dígitos del contador -->
     <div
       id="countdown"
       class="flex justify-center gap-4 text-2xl md:text-4xl lg:text-5xl font-mono font-bold mb-4"
@@ -26,12 +27,36 @@
         <span class="text-xs md:text-sm lg:text-base font-normal">seg</span>
       </div>
     </div>
+    <!-- Mensaje cuando las fiestas comienzan -->
+    <div
+      id="cd-fiestas-started"
+      class="hidden flex-col items-center gap-3 text-center mb-4"
+    >
+      <span class="text-5xl md:text-6xl animate-bounce">🎉</span>
+      <p class="text-2xl md:text-3xl font-extrabold tracking-wide">
+        ¡Las fiestas han comenzado!
+      </p>
+    </div>
   </div>
   <script is:inline>
     const target = new Date("2026-07-31T19:00:00");
+    const cdDigits = document.getElementById("countdown");
+    const cdStarted = document.getElementById("cd-fiestas-started");
+
     function updateCountdown() {
       const now = new Date();
-      let diff = Math.max(0, target - now);
+      const remaining = target - now;
+
+      if (remaining <= 0) {
+        if (cdDigits) cdDigits.classList.add("hidden");
+        if (cdStarted) {
+          cdStarted.classList.remove("hidden");
+          cdStarted.classList.add("flex");
+        }
+        return;
+      }
+
+      let diff = remaining;
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       diff -= days * (1000 * 60 * 60 * 24);
       const hours = Math.floor(diff / (1000 * 60 * 60));
