@@ -1,33 +1,352 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import EventoActual from "../components/EventoActual.astro";
-import ProgramaFiestas from "../components/ProgramaFiestas.astro";
-import GaleriaFiestas from "../components/GaleriaFiestas.astro";
-import Ubicacion from "../components/Ubicacion.astro";
-import Patrocinadores from "../components/Patrocinadores.astro";
-import Contacto from "../components/Contacto.astro";
-import Eventos from "../components/Eventos.astro";
-import Artistas from "../components/Artistas.astro";
-import Concentracion from "../components/Concentracion.astro";
+// Landing page "Próximamente" – Fiestas de Las Terreras 2027
 ---
 
-<Layout
-  title="Fiestas de Las Terreras 2026–Programa y Galería"
-  description="Consulta el programa completo, la galería, los patrocinadores y la ubicación de las Fiestas de Las Terreras 2026."
->
-  <div class="flex flex-col min-h-dvh w-full overflow-x-hidden">
-    <main class="flex-1">
-      <Hero />
-      <EventoActual />
-      <ProgramaFiestas />
-      <Artistas />
-      <Concentracion />
-      <!-- <Eventos /> -->
-      <Ubicacion />
-      <GaleriaFiestas />
-      <Patrocinadores />
-      <Contacto />
-    </main>
-  </div>
-</Layout>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fiestas de Las Terreras 2027 – Próximamente</title>
+    <meta name="description" content="Las Fiestas de Las Terreras 2027 están en camino. ¡Apunta la fecha y no te las pierdas!" />
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="e0ae2db4-7bbb-480f-ae2e-fe23db8b011f"></script>
+
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --gold: #f5a623;
+        --gold-light: #ffd07a;
+        --deep: #0d0a1a;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --border: rgba(245, 166, 35, 0.3);
+      }
+
+      html, body {
+        height: 100%;
+        font-family: 'Outfit', sans-serif;
+        background-color: var(--deep);
+        color: #fff;
+        overflow: hidden;
+      }
+
+      /* ── Fondo con imagen de Las Terreras ── */
+      .bg-layer {
+        position: fixed;
+        inset: 0;
+        background-image: url('/fondo-terreras-1920.webp');
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.25) saturate(0.7);
+        z-index: 0;
+      }
+
+      /* Gradiente sobre la imagen */
+      .bg-overlay {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(ellipse at 50% 80%, rgba(245,166,35,0.12) 0%, transparent 65%),
+                    linear-gradient(to bottom, rgba(13,10,26,0.5) 0%, rgba(13,10,26,0.85) 100%);
+        z-index: 1;
+      }
+
+      /* ── Contenido principal ── */
+      .wrapper {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100dvh;
+        padding: 2rem;
+        text-align: center;
+        gap: 2.5rem;
+      }
+
+      /* Línea decorativa superior */
+      .deco-line {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        border-radius: 2px;
+      }
+
+      /* Lugar */
+      .lugar {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.9;
+      }
+
+      /* Título principal */
+      .titulo {
+        font-size: clamp(2.8rem, 9vw, 6rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #fff 0%, var(--gold-light) 60%, var(--gold) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 0 40px rgba(245,166,35,0.35));
+      }
+
+      .titulo span {
+        display: block;
+        font-size: clamp(1rem, 3.5vw, 1.6rem);
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        background: linear-gradient(90deg, rgba(255,255,255,0.7), rgba(255,255,255,0.95));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        filter: none;
+      }
+
+      /* Bajada */
+      .bajada {
+        font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+        font-weight: 300;
+        color: rgba(255,255,255,0.6);
+        max-width: 480px;
+        line-height: 1.7;
+      }
+
+      /* ── Contador ── */
+      .countdown {
+        display: flex;
+        gap: clamp(0.75rem, 3vw, 1.75rem);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: clamp(1rem, 3vw, 1.5rem) clamp(1.2rem, 4vw, 2rem);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        min-width: clamp(70px, 18vw, 100px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .countdown-item:hover {
+        border-color: rgba(245,166,35,0.6);
+        box-shadow: 0 8px 40px rgba(245,166,35,0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+      }
+
+      .countdown-number {
+        font-size: clamp(2rem, 8vw, 3.8rem);
+        font-weight: 700;
+        line-height: 1;
+        background: linear-gradient(180deg, #fff 0%, var(--gold-light) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.02em;
+        transition: transform 0.15s ease;
+      }
+
+      .countdown-label {
+        font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.85;
+      }
+
+      /* Fecha destino */
+      .fecha {
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 0.1em;
+      }
+
+      /* Mensaje cuando llega */
+      .ya-estamos {
+        display: none;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--gold-light);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+
+      /* ── Partículas flotantes ── */
+      .particles {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(245,166,35,0.6), transparent);
+        animation: float linear infinite;
+        opacity: 0;
+      }
+
+      @keyframes float {
+        0%   { transform: translateY(110vh) scale(0); opacity: 0; }
+        10%  { opacity: 1; }
+        90%  { opacity: 0.6; }
+        100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+      }
+
+      /* Animación de entrada */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-in {
+        animation: fadeUp 0.8s ease both;
+      }
+
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.25s; }
+      .delay-3 { animation-delay: 0.4s; }
+      .delay-4 { animation-delay: 0.55s; }
+      .delay-5 { animation-delay: 0.7s; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Fondo -->
+    <div class="bg-layer" aria-hidden="true"></div>
+    <div class="bg-overlay" aria-hidden="true"></div>
+
+    <!-- Partículas -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- Contenido -->
+    <div class="wrapper">
+      <div class="deco-line animate-in delay-1"></div>
+
+      <p class="lugar animate-in delay-1">Las Terreras · Murcia</p>
+
+      <h1 class="titulo animate-in delay-2">
+        <span>Fiestas Patronales</span>
+        Próximamente
+      </h1>
+
+      <p class="bajada animate-in delay-3">
+        Las fiestas de 2026 han sido un éxito.<br />
+        ¡Nos vemos en 2027 con más ganas que nunca!
+      </p>
+
+      <!-- Contador -->
+      <div class="countdown animate-in delay-4" id="countdown" role="timer" aria-label="Cuenta atrás para las fiestas 2027">
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-dias">--</span>
+          <span class="countdown-label">Días</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-horas">--</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-minutos">--</span>
+          <span class="countdown-label">Min</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-segundos">--</span>
+          <span class="countdown-label">Seg</span>
+        </div>
+      </div>
+
+      <p class="ya-estamos" id="ya-estamos">🎉 ¡Ya estamos de Fiestas!</p>
+
+      <p class="fecha animate-in delay-5">30 · agosto · 2027 · 21:00 h</p>
+
+      <div class="deco-line animate-in delay-5"></div>
+    </div>
+
+    <script>
+      // ── Contador regresivo ──
+      const TARGET = new Date('2027-08-30T21:00:00+02:00').getTime();
+
+      const elDias     = document.getElementById('cd-dias');
+      const elHoras    = document.getElementById('cd-horas');
+      const elMinutos  = document.getElementById('cd-minutos');
+      const elSegundos = document.getElementById('cd-segundos');
+      const elCountdown = document.getElementById('countdown');
+      const elYa        = document.getElementById('ya-estamos');
+
+      function pad(n) {
+        return String(Math.max(0, n)).padStart(2, '0');
+      }
+
+      function tick() {
+        const now  = Date.now();
+        const diff = TARGET - now;
+
+        if (diff <= 0) {
+          elCountdown.style.display = 'none';
+          elYa.style.display = 'block';
+          return;
+        }
+
+        const totalSeg = Math.floor(diff / 1000);
+        const dias     = Math.floor(totalSeg / 86400);
+        const horas    = Math.floor((totalSeg % 86400) / 3600);
+        const minutos  = Math.floor((totalSeg % 3600) / 60);
+        const segundos = totalSeg % 60;
+
+        elDias.textContent     = pad(dias);
+        elHoras.textContent    = pad(horas);
+        elMinutos.textContent  = pad(minutos);
+        elSegundos.textContent = pad(segundos);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+
+      // ── Partículas ──
+      const container = document.getElementById('particles');
+      const TOTAL = 18;
+
+      for (let i = 0; i < TOTAL; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 4 + 2;
+        p.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          left: ${Math.random() * 100}%;
+          animation-duration: ${Math.random() * 14 + 10}s;
+          animation-delay: ${Math.random() * 12}s;
+        `;
+        container.appendChild(p);
+      }
+    </script>
+  </body>
+</html>
